@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Panel - Conferencia Taller</title>
+<style>
+:root{--blue:#1769aa;--dark:#17324d;--light:#f4f7fb;--green:#198754;--orange:#f59e0b;--red:#dc3545}
+*{box-sizing:border-box}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;background:var(--light);color:#183247}
+header{background:linear-gradient(135deg,#1769aa,#0e4776);color:white;padding:22px 18px 18px;position:sticky;top:0;z-index:5;box-shadow:0 3px 12px #0002}
+h1{font-size:23px;margin:0 0 5px}header p{margin:3px 0;font-size:14px;opacity:.94}.wrap{max-width:1050px;margin:auto;padding:16px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.card{background:white;border-radius:16px;padding:18px;box-shadow:0 2px 12px #17324d14;margin-bottom:16px}
+h2{font-size:18px;margin:0 0 14px;color:var(--dark)}label{display:block;font-size:13px;font-weight:700;margin:12px 0 5px}
+input,select,textarea{width:100%;padding:13px;border:1px solid #cbd6e2;border-radius:10px;font-size:16px;background:white}
+textarea{min-height:75px;resize:vertical}.checks{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
+.check{border:1px solid #d5dee8;border-radius:10px;padding:11px;display:flex;gap:8px;align-items:center;background:#fafcff}.check input{width:auto}
+button{border:0;border-radius:10px;padding:12px 16px;font-weight:700;font-size:15px;cursor:pointer}.primary{background:var(--blue);color:white}.secondary{background:#e8eef5;color:#183247}.danger{background:#fee2e2;color:#991b1b}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.stat{background:white;border-radius:14px;padding:13px;box-shadow:0 2px 10px #17324d12}.stat b{font-size:25px;display:block;color:var(--blue)}.stat span{font-size:12px}
+.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}.toolbar input{flex:1;min-width:180px}
+.person{border:1px solid #dbe3eb;border-radius:12px;padding:13px;margin:9px 0}.person-top{display:flex;justify-content:space-between;gap:10px}.name{font-weight:800}.badge{display:inline-block;background:#e7f2fb;color:#1769aa;border-radius:20px;padding:4px 8px;font-size:11px;margin:3px 3px 0 0}.follow{color:#198754}.small{font-size:12px;color:#607488}.empty{text-align:center;color:#718096;padding:20px}
+@media(max-width:700px){.grid{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr}.checks{grid-template-columns:1fr 1fr}header{position:relative}}
+</style>
+</head>
+<body>
+<header>
+<div class="wrap">
+<h1>Conferencia Taller: ¿Cómo prevenir riesgos fiscales?</h1>
+<p>San Andrés Tuxtla · Jueves 08 de octubre</p>
+<p>Contadores · Auxiliares · Estudiantes | Siigo Fiscal + IA para el área contable y administrativa</p>
+</div>
+</header>
+
+<main class="wrap">
+<div class="stats">
+<div class="stat"><b id="total">0</b><span>Interesados</span></div>
+<div class="stat"><b id="siigo">0</b><span>Siigo Fiscal</span></div>
+<div class="stat"><b id="sistemas">0</b><span>Sistemas</span></div>
+<div class="stat"><b id="ia">0</b><span>Interés en IA</span></div>
+</div>
+
+<div class="grid" style="margin-top:16px">
+<section class="card">
+<h2>➕ Registrar interesado</h2>
+<label>Nombre *</label><input id="nombre" placeholder="Nombre completo">
+<label>WhatsApp / Teléfono</label><input id="telefono" type="tel" placeholder="10 dígitos">
+<label>Perfil</label>
+<select id="perfil"><option>Contador</option><option>Auxiliar contable</option><option>Estudiante</option><option>Empresario / Administrativo</option><option>Otro</option></select>
+<label>¿Qué le interesa?</label>
+<div class="checks">
+<label class="check"><input type="checkbox" value="COI"> Aspel COI</label>
+<label class="check"><input type="checkbox" value="NOI"> Aspel NOI</label>
+<label class="check"><input type="checkbox" value="SAE"> Aspel SAE</label>
+<label class="check"><input type="checkbox" value="Siigo Fiscal"> Siigo Fiscal</label>
+<label class="check"><input type="checkbox" value="IA"> Inteligencia Artificial</label>
+<label class="check"><input type="checkbox" value="Consultoría"> Consultoría</label>
+</div>
+<label>Prioridad de seguimiento</label>
+<select id="prioridad"><option>Alta</option><option selected>Media</option><option>Baja</option></select>
+<label>Notas</label><textarea id="notas" placeholder="Necesidad, comentario o siguiente paso..."></textarea>
+<div class="actions"><button class="primary" onclick="guardar()">Guardar interesado</button><button class="secondary" onclick="limpiar()">Limpiar</button></div>
+</section>
+
+<section class="card">
+<h2>📋 Seguimiento</h2>
+<div class="toolbar">
+<input id="buscar" placeholder="Buscar nombre, teléfono o interés..." oninput="render()">
+<button class="secondary" onclick="exportar()">⬇ Exportar Excel/CSV</button>
+<button class="secondary" onclick="window.print()">🖨 Imprimir</button>
+</div>
+<div id="lista"></div>
+</section>
+</div>
+
+<section class="card">
+<h2>🎯 Mensaje clave del evento</h2>
+<p><b>Detectar riesgos antes de que se conviertan en un requerimiento.</b></p>
+<p>Presentación de <b>Siigo Fiscal</b> con <b>15 días de uso gratuito, sin compromiso</b>, más una sesión de <b>Inteligencia Artificial aplicada al área contable y administrativa</b>.</p>
+</section>
+</main>
+
+<script>
+let datos=JSON.parse(localStorage.getItem('evento_riesgos_fiscales')||'[]');
+function getIntereses(){return [...document.querySelectorAll('.check input:checked')].map(x=>x.value)}
+function guardar(){
+ const nombre=document.getElementById('nombre').value.trim();
+ if(!nombre){alert('Captura el nombre del interesado.');return}
+ const item={id:Date.now(),nombre,telefono:document.getElementById('telefono').value.trim(),perfil:document.getElementById('perfil').value,intereses:getIntereses(),prioridad:document.getElementById('prioridad').value,notas:document.getElementById('notas').value.trim(),fecha:new Date().toLocaleString('es-MX')};
+ datos.unshift(item);localStorage.setItem('evento_riesgos_fiscales',JSON.stringify(datos));limpiar();render();
+}
+function limpiar(){
+ ['nombre','telefono','notas'].forEach(id=>document.getElementById(id).value='');
+ document.querySelectorAll('.check input').forEach(x=>x.checked=false);
+ document.getElementById('prioridad').value='Media';
+}
+function borrar(id){if(confirm('¿Eliminar este registro?')){datos=datos.filter(x=>x.id!==id);localStorage.setItem('evento_riesgos_fiscales',JSON.stringify(datos));render()}}
+function render(){
+ const q=document.getElementById('buscar').value.toLowerCase();
+ const arr=datos.filter(x=>(x.nombre+' '+x.telefono+' '+x.perfil+' '+x.intereses.join(' ')+' '+x.notas).toLowerCase().includes(q));
+ document.getElementById('total').textContent=datos.length;
+ document.getElementById('siigo').textContent=datos.filter(x=>x.intereses.includes('Siigo Fiscal')).length;
+ document.getElementById('sistemas').textContent=datos.filter(x=>x.intereses.some(i=>['COI','NOI','SAE'].includes(i))).length;
+ document.getElementById('ia').textContent=datos.filter(x=>x.intereses.includes('IA')).length;
+ document.getElementById('lista').innerHTML=arr.length?arr.map(x=>`<div class="person"><div class="person-top"><div><span class="name">${esc(x.nombre)}</span><div class="small">${esc(x.perfil)} ${x.telefono?' · '+esc(x.telefono):''}</div></div><b class="${x.prioridad==='Alta'?'follow':''}">${x.prioridad}</b></div><div>${x.intereses.map(i=>`<span class="badge">${esc(i)}</span>`).join('')}</div>${x.notas?`<div class="small" style="margin-top:7px">${esc(x.notas)}</div>`:''}<div class="small" style="margin-top:7px">${esc(x.fecha)}</div><button class="danger" style="margin-top:8px" onclick="borrar(${x.id})">Eliminar</button></div>`).join(''):'<div class="empty">Aún no hay interesados registrados.</div>';
+}
+function esc(s){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
+function exportar(){
+ let rows=[['Nombre','Telefono','Perfil','Intereses','Prioridad','Notas','Fecha'],...datos.map(x=>[x.nombre,x.telefono,x.perfil,x.intereses.join(' | '),x.prioridad,x.notas,x.fecha])];
+ let csv=rows.map(r=>r.map(v=>'"'+String(v).replaceAll('"','""')+'"').join(',')).join('\\n');
+ let a=document.createElement('a');a.href=URL.createObjectURL(new Blob(["\\ufeff"+csv],{type:'text/csv;charset=utf-8'}));a.download='interesados_riesgos_fiscales.csv';a.click();
+}
+render();
+</script>
+</body></html>
