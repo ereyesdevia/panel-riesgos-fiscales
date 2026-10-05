@@ -8,26 +8,29 @@
 :root{--blue:#1769aa;--blue2:#0e4776;--bg:#f3f6fa;--ink:#17324d;--muted:#68798b;--green:#198754;--orange:#f59e0b;--red:#dc3545}
 *{box-sizing:border-box}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;background:var(--bg);color:var(--ink)}
 header{background:linear-gradient(135deg,var(--blue),var(--blue2));color:#fff;padding:20px 16px;box-shadow:0 3px 14px #0002}
-.wrap{max-width:1150px;margin:auto}.head{display:flex;justify-content:space-between;gap:15px;align-items:center}.head h1{font-size:22px;margin:0 0 4px}.head p{margin:2px 0;font-size:13px;opacity:.94}.authbtn{background:#fff;color:var(--blue);border:0;border-radius:9px;padding:10px 12px;font-weight:800}
+.wrap{max-width:1150px;margin:auto}.head{display:flex;justify-content:space-between;gap:18px;align-items:center}.brand{display:flex;align-items:center;gap:15px}.brand-logo{width:190px;height:76px;object-fit:contain;background:#fff;border-radius:12px;padding:6px 10px;box-shadow:0 2px 8px #0002}.brand-copy{min-width:0}.head h1{font-size:22px;margin:0 0 4px}.head p{margin:2px 0;font-size:13px;opacity:.94}.authbtn{background:#fff;color:var(--blue);border:0;border-radius:9px;padding:10px 12px;font-weight:800}
 main{padding:16px}.tabs{display:flex;gap:8px;margin-bottom:15px}.tab{background:#fff;border:1px solid #d7e0e9;color:var(--ink);border-radius:10px;padding:11px 15px;font-weight:800}.tab.active{background:var(--blue);color:#fff}
 .stats{display:grid;grid-template-columns:repeat(6,1fr);gap:9px;margin-bottom:15px}.stat{background:#fff;border-radius:13px;padding:12px;box-shadow:0 2px 10px #17324d12}.stat b{display:block;font-size:24px;color:var(--blue)}.stat span{font-size:11px;color:var(--muted)}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}.card{background:#fff;border-radius:15px;padding:17px;box-shadow:0 2px 10px #17324d12;margin-bottom:15px}h2{font-size:18px;margin:0 0 13px}
 label{font-size:13px;font-weight:800;display:block;margin:10px 0 5px}input,select,textarea{width:100%;padding:12px;border:1px solid #cbd7e3;border-radius:9px;font-size:16px;background:#fff}textarea{min-height:70px}
-.checks{display:grid;grid-template-columns:1fr 1fr;gap:7px}.check{border:1px solid #d6e0e8;border-radius:9px;padding:9px;display:flex;align-items:center;gap:7px;background:#fbfdff;font-size:13px}.check input{width:auto}
+.checks{display:grid;grid-template-columns:1fr 1fr;gap:7px}.checks .check{min-height:42px}.check{border:1px solid #d6e0e8;border-radius:9px;padding:9px;display:flex;align-items:center;gap:7px;background:#fbfdff;font-size:13px}.check input{width:auto}
 .row{display:flex;gap:8px}.row>*{flex:1}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}button{border:0;border-radius:9px;padding:11px 14px;font-weight:800;cursor:pointer}.primary{background:var(--blue);color:#fff}.secondary{background:#e8eef5;color:var(--ink)}.green{background:var(--green);color:#fff}.danger{background:#fee2e2;color:#9b1c1c}
 .notice{background:#eef7ff;border-left:4px solid var(--blue);padding:11px;border-radius:7px;font-size:13px;margin-bottom:13px}
 .toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}.toolbar input{min-width:190px;flex:1}.person{border:1px solid #dbe3eb;border-radius:12px;padding:13px;margin:9px 0}.person-top{display:flex;justify-content:space-between;gap:10px}.name{font-weight:900}.small{font-size:12px;color:var(--muted)}.badge{display:inline-block;background:#e7f2fb;color:#1769aa;border-radius:18px;padding:4px 8px;font-size:11px;margin:3px 3px 0 0}.high{color:#c62828}.medium{color:#9a6700}.low{color:#198754}.hidden{display:none}.empty{text-align:center;padding:25px;color:var(--muted)}
 .login{max-width:420px;margin:35px auto}.login p{color:var(--muted);font-size:13px}.footer{text-align:center;color:#718096;font-size:11px;padding:20px}
 @media(max-width:800px){.grid{grid-template-columns:1fr}.stats{grid-template-columns:repeat(3,1fr)}}
-@media(max-width:520px){.stats{grid-template-columns:repeat(2,1fr)}.checks{grid-template-columns:1fr}.head{align-items:flex-start;flex-direction:column}}
+@media(max-width:520px){.stats{grid-template-columns:repeat(2,1fr)}.checks{grid-template-columns:1fr}.head{align-items:flex-start;flex-direction:column}.brand{width:100%;align-items:flex-start}.brand-logo{width:150px;height:62px}.brand-copy{flex:1}.head h1{font-size:19px}}
 </style>
 </head>
 <body>
 <header>
 <div class="wrap head">
-<div><h1>Conferencia Taller: ¿Cómo prevenir riesgos fiscales?</h1>
+<div class="brand">
+<img class="brand-logo" src="logo-er.png" alt="Soluciones Integrales">
+<div class="brand-copy"><h1>Conferencia Taller: ¿Cómo prevenir riesgos fiscales?</h1>
 <p>San Andrés Tuxtla · Jueves 08 de octubre</p>
 <p>Contadores · Auxiliares · Estudiantes · Siigo Fiscal + IA</p></div>
+</div>
 <button class="authbtn" id="authBtn" onclick="toggleAuth()">🔐 Administración</button>
 </div>
 </header>
@@ -42,14 +45,20 @@ label{font-size:13px;font-weight:800;display:block;margin:10px 0 5px}input,selec
 <label>Nombre completo *</label><input id="nombre" autocomplete="name" placeholder="Nombre del contador o interesado">
 <label>WhatsApp / Teléfono</label><input id="telefono" inputmode="tel" autocomplete="tel" placeholder="10 dígitos">
 <label>Perfil</label><select id="perfil"><option>Contador</option><option>Auxiliar contable</option><option>Estudiante</option><option>Empresario / Administrativo</option><option>Otro</option></select>
-<label>¿Qué le interesa?</label>
+<label>¿Qué servicio le interesa?</label>
 <div class="checks">
 <label class="check"><input type="checkbox" value="COI"> Aspel COI</label>
 <label class="check"><input type="checkbox" value="NOI"> Aspel NOI</label>
+<label class="check"><input type="checkbox" value="NOI Asistente"> NOI Asistente</label>
 <label class="check"><input type="checkbox" value="SAE"> Aspel SAE</label>
+<label class="check"><input type="checkbox" value="Caja"> Aspel Caja</label>
+<label class="check"><input type="checkbox" value="Banco"> Aspel Banco</label>
 <label class="check"><input type="checkbox" value="Siigo Fiscal"> Siigo Fiscal</label>
-<label class="check"><input type="checkbox" value="IA"> Inteligencia Artificial</label>
+<label class="check"><input type="checkbox" value="Servidor Virtual"> Servidor Virtual</label>
+<label class="check"><input type="checkbox" value="Soporte Técnico"> Soporte Técnico</label>
 <label class="check"><input type="checkbox" value="Consultoría"> Consultoría</label>
+<label class="check"><input type="checkbox" value="Mantenimiento"> Mantenimiento</label>
+<label class="check"><input type="checkbox" value="IA"> Inteligencia Artificial</label>
 </div>
 </div>
 <div>
@@ -92,9 +101,11 @@ label{font-size:13px;font-weight:800;display:block;margin:10px 0 5px}input,selec
 <div class="stat"><b id="stIA">0</b><span>IA</span></div>
 <div class="stat"><b id="stAlta">0</b><span>Prioridad alta</span></div>
 <div class="stat"><b id="stClientes">0</b><span>Clientes</span></div>
+<div class="stat"><b id="stInfo">0</b><span>Aceptan información</span></div>
+<div class="stat"><b id="stSoporte">0</b><span>Soporte técnico</span></div>
 </div>
 <div class="card">
-<div class="toolbar"><input id="buscar" placeholder="Buscar nombre, teléfono, perfil o interés..." oninput="renderAdmin()"><select id="filtroEstatus" onchange="renderAdmin()"><option value="">Todos los estatus</option><option>Nuevo</option><option>Contactado</option><option>En seguimiento</option><option>Cliente</option></select><select id="filtroInteres" onchange="renderAdmin()"><option value="">Todos los intereses</option><option>Siigo Fiscal</option><option>COI</option><option>NOI</option><option>SAE</option><option>IA</option><option>Consultoría</option></select><button class="secondary" onclick="exportar()">⬇ CSV</button><button class="secondary" onclick="cargar()">↻ Actualizar</button><button class="danger" onclick="logout()">Salir</button></div>
+<div class="toolbar"><input id="buscar" placeholder="Buscar nombre, teléfono, perfil o interés..." oninput="renderAdmin()"><select id="filtroEstatus" onchange="renderAdmin()"><option value="">Todos los estatus</option><option>Nuevo</option><option>Contactado</option><option>En seguimiento</option><option>Cliente</option></select><select id="filtroInteres" onchange="renderAdmin()"><option value="">Todos los intereses</option><option>Siigo Fiscal</option><option>COI</option><option>NOI</option><option>NOI Asistente</option><option>SAE</option><option>Caja</option><option>Banco</option><option>Servidor Virtual</option><option>Soporte Técnico</option><option>IA</option><option>Consultoría</option><option>Mantenimiento</option></select><button class="secondary" onclick="exportar()">📥 Exportar CSV</button><button class="secondary" onclick="cargar()">↻ Actualizar</button><button class="danger" onclick="logout()">Salir</button></div>
 <div id="lista"></div>
 </div>
 </div>
@@ -121,7 +132,7 @@ async function guardar(){
  if(!nombre){setMsg('Captura el nombre del interesado.');return}
  const ints=intereses();
  const row={nombre,telefono:document.getElementById('telefono').value.trim(),perfil:document.getElementById('perfil').value,
- interesa_coi:ints.includes('COI'),interesa_noi:ints.includes('NOI'),interesa_sae:ints.includes('SAE'),interesa_siigo:ints.includes('Siigo Fiscal'),interesa_ia:ints.includes('IA'),interesa_consultoria:ints.includes('Consultoría'),
+ interesa_coi:ints.includes('COI'),interesa_noi:ints.includes('NOI'),interesa_noi_asistente:ints.includes('NOI Asistente'),interesa_sae:ints.includes('SAE'),interesa_caja:ints.includes('Caja'),interesa_banco:ints.includes('Banco'),interesa_siigo:ints.includes('Siigo Fiscal'),interesa_servidor_virtual:ints.includes('Servidor Virtual'),interesa_soporte_tecnico:ints.includes('Soporte Técnico'),interesa_ia:ints.includes('IA'),interesa_consultoria:ints.includes('Consultoría'),interesa_mantenimiento:ints.includes('Mantenimiento'),
  objetivo:document.getElementById('objetivo').value,prioridad:document.getElementById('prioridad').value,notas:document.getElementById('notas').value.trim(),desea_informacion:document.getElementById('desea').value==='true',estatus:'Nuevo'};
  const {error}=await sb.from('prospectos').insert(row);
  if(error){setMsg('No se pudo guardar: '+error.message);return}
@@ -145,11 +156,11 @@ async function cargar(){
  if(error){document.getElementById('lista').innerHTML='<div class="empty">Error: '+esc(error.message)+'</div>';return}
  datos=data||[];renderAdmin();
 }
-function ints(x){let a=[];if(x.interesa_coi)a.push('COI');if(x.interesa_noi)a.push('NOI');if(x.interesa_sae)a.push('SAE');if(x.interesa_siigo)a.push('Siigo Fiscal');if(x.interesa_ia)a.push('IA');if(x.interesa_consultoria)a.push('Consultoría');return a}
+function ints(x){let a=[];if(x.interesa_coi)a.push('COI');if(x.interesa_noi)a.push('NOI');if(x.interesa_noi_asistente)a.push('NOI Asistente');if(x.interesa_sae)a.push('SAE');if(x.interesa_caja)a.push('Caja');if(x.interesa_banco)a.push('Banco');if(x.interesa_siigo)a.push('Siigo Fiscal');if(x.interesa_servidor_virtual)a.push('Servidor Virtual');if(x.interesa_soporte_tecnico)a.push('Soporte Técnico');if(x.interesa_ia)a.push('IA');if(x.interesa_consultoria)a.push('Consultoría');if(x.interesa_mantenimiento)a.push('Mantenimiento');return a}
 function renderAdmin(){
  let q=(document.getElementById('buscar').value||'').toLowerCase(), fe=document.getElementById('filtroEstatus').value, fi=document.getElementById('filtroInteres').value;
  let arr=datos.filter(x=>(!fe||x.estatus===fe)&&(!fi||ints(x).includes(fi))&&((x.nombre+' '+(x.telefono||'')+' '+(x.perfil||'')+' '+ints(x).join(' ')+' '+(x.objetivo||'')+' '+(x.notas||'')).toLowerCase().includes(q)));
- document.getElementById('stTotal').textContent=datos.length;document.getElementById('stSiigo').textContent=datos.filter(x=>x.interesa_siigo).length;document.getElementById('stSistemas').textContent=datos.filter(x=>x.interesa_coi||x.interesa_noi||x.interesa_sae).length;document.getElementById('stIA').textContent=datos.filter(x=>x.interesa_ia).length;document.getElementById('stAlta').textContent=datos.filter(x=>x.prioridad==='Alta').length;document.getElementById('stClientes').textContent=datos.filter(x=>x.estatus==='Cliente').length;
+ document.getElementById('stTotal').textContent=datos.length;document.getElementById('stSiigo').textContent=datos.filter(x=>x.interesa_siigo).length;document.getElementById('stSistemas').textContent=datos.filter(x=>x.interesa_coi||x.interesa_noi||x.interesa_noi_asistente||x.interesa_sae||x.interesa_caja||x.interesa_banco).length;document.getElementById('stIA').textContent=datos.filter(x=>x.interesa_ia).length;document.getElementById('stAlta').textContent=datos.filter(x=>x.prioridad==='Alta').length;document.getElementById('stClientes').textContent=datos.filter(x=>x.estatus==='Cliente').length;document.getElementById('stInfo').textContent=datos.filter(x=>x.desea_informacion).length;document.getElementById('stSoporte').textContent=datos.filter(x=>x.interesa_soporte_tecnico).length;
  document.getElementById('lista').innerHTML=arr.length?arr.map(x=>{let tel=(x.telefono||'').replace(/\D/g,'');return `<div class="person"><div class="person-top"><div><span class="name">${esc(x.nombre)}</span><div class="small">${esc(x.perfil||'')}${x.telefono?' · '+esc(x.telefono):''}</div></div><b class="${x.prioridad==='Alta'?'high':x.prioridad==='Baja'?'low':'medium'}">${esc(x.prioridad||'Media')}</b></div><div>${ints(x).map(i=>`<span class="badge">${esc(i)}</span>`).join('')}</div><div class="small" style="margin-top:6px"><b>Busca:</b> ${esc(x.objetivo||'No indicado')} · <b>Info:</b> ${x.desea_informacion?'Sí':'No'}</div><div style="margin-top:8px"><select onchange="cambiarEstatus(${x.id},this.value)"><option ${x.estatus==='Nuevo'?'selected':''}>Nuevo</option><option ${x.estatus==='Contactado'?'selected':''}>Contactado</option><option ${x.estatus==='En seguimiento'?'selected':''}>En seguimiento</option><option ${x.estatus==='Cliente'?'selected':''}>Cliente</option></select></div>${x.notas?`<div class="small" style="margin-top:7px">${esc(x.notas)}</div>`:''}<div class="actions"><button class="secondary" onclick="editarNota(${x.id})">📝 Nota</button>${tel?`<button class="green" onclick="window.open('https://wa.me/52${tel}','_blank')">📱 WhatsApp</button>`:''}<button class="danger" onclick="borrar(${x.id})">Eliminar</button></div></div>`}).join(''):'<div class="empty">No hay prospectos que coincidan.</div>';
 }
 async function cambiarEstatus(id,v){const {error}=await sb.from('prospectos').update({estatus:v}).eq('id',id);if(error)alert(error.message);else cargar()}
